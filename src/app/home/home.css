@@ -1,1 +1,20 @@
 /*styles for home content only*/
+:host(.pageContainer) {
+        position: fixed;
+        display: inline-block;
+        width: 100%;
+        -webkit-transition: all ease-in-out 0.5s;
+        transition: opacity 2s;
+    }
+
+:host(.pageContainer.ng-enter) {
+    opacity: 0;
+}
+
+:host(.pageContainer.ng-enter-active) {
+    opacity: 100;
+}
+
+:host(.pageContainer.ng-leave) {
+    opacity: 0;
+}

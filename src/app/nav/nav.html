@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['Index']">Brand-Front1</a>
+    </div>
+    <div id="navbar" [collapse]="isCollapsed" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li router-active><a [routerLink]="['Index']" >Index</a></li>
+        <li router-active><a [routerLink]="['Home']" >Home</a></li>
+        <li router-active><a [routerLink]="['About']" >About</a></li>
+        <li router-active><a [routerLink]="['ProductDashboard']" >Product</a></li>
+
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div>
+  </div>
+</nav>

@@ -38,6 +38,8 @@ interface GlobalEnvironment {
   HMR;
 }
 
+
+
 interface WebpackModule {
   hot: {
     data?: any,
@@ -105,7 +107,6 @@ declare namespace Reflect {
   function deleteMetadata(metadataKey: any, target: Object): boolean;
   function deleteMetadata(metadataKey: any, target: Object, targetKey: string | symbol): boolean;
 }
-
 
 // We need this here since there is a problem with Zone.js typings
 interface Thenable<T> {

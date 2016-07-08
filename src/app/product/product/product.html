@@ -1,0 +1,16 @@
+<div class="col-md-12 card  text-center"  style="background-color:#FFFF00;">
+  <img class="card-img-top" src="/assets/icon/android-icon-72x72.png" alt="Card image cap">
+  <div class="card-block" >
+      <h4 class="card-title">{{product.about}}</h4>
+      <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed">Toggle collapse
+      </button>
+      <hr>
+      <div [collapse]="isCollapsed" style="z-index:1; position: absolute; margin-left:-15px; width:100%; height:250px; margin-top:-80px;" >
+        <div style="background-color:#FF0000; " (mouseleave)="mouseOut()">
+            <p>{{product.text}}</p>
+            <p>{{product.dateCreated}}</p>
+            <hr>
+        </div>
+      </div>
+  </div>
+</div>

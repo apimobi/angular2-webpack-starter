@@ -25,5 +25,6 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": { "rewriteTsconfig": false },
+  "files": [ "node_modules/angular2/typings/browser.d.ts" ]
 }

@@ -6,7 +6,13 @@ import { RouteConfig, Router } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
 import { Home } from './home';
+import { ProductDashboardComponent } from './product/productDashboard.component';
+
 import { RouterActive } from './router-active';
+import { TopNavBarComponent } from './nav/navbar.component';
+
+/* src/app/home/home.ts */
+import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 /*
  * App Component
@@ -16,46 +22,29 @@ import { RouterActive } from './router-active';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActive ],
+  directives: [ RouterActive, AlertComponent, DATEPICKER_DIRECTIVES, TopNavBarComponent],
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('./app.css')
   ],
-  template: `
-    <span router-active>
-      <button [routerLink]=" ['Index'] ">
-        Index
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['Home'] ">
-        Home
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['About'] ">
-        About
-      </button>
-    </span>
+  template: require ('./app.html')
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-  `
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
+  { path: '/productDashBoard', name: 'ProductDashboard', component: ProductDashboardComponent },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
+
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
+  date: Date = new Date();
 
   constructor(
     public appState: AppState) {
