@@ -7,6 +7,7 @@ import { RouteConfig, Router } from '@angular/router-deprecated';
 import { AppState } from './app.service';
 import { Home } from './home';
 import { ProductDashboardComponent } from './product/productDashboard.component';
+import { Calendar } from './calendar/calendar.component';
 
 import { RouterActive } from './router-active';
 import { TopNavBarComponent } from './nav/navbar.component';
@@ -35,6 +36,7 @@ import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
   { path: '/productDashBoard', name: 'ProductDashboard', component: ProductDashboardComponent },
+  { path: '/calendar', name: 'Calendar', component: Calendar },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 
