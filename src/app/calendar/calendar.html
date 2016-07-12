@@ -1,11 +1,23 @@
 <div class="row">
-    <div class="col-md-12"> <h3>Calendar</h3> </div>
-    <div *ngFor="let day of days" [ngClass]="{'row': getClassRow(day.day)}" >
 
-            <div class="col-md-1">
-                <span [innerHTML]="day.date"></span>
-                <span [innerHTML]="day.month"></span>
-                <span [innerHTML]="day.year"></span>
-            </div>
+    <div class="col-md-12"> <h3>Calendar</h3> </div>
+
+    <div class="col-md-2">
+      <div *ngFor="let month of tab_month; let i = index">
+          <span [innerHTML]="month" (click)="updateCalendar(i)"></span>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+          <div *ngFor="let day of days; let i = index"  >
+                  <!-- [ngClass]="{'row': getClassRow(day.day, i)}"   -->
+                  <div *ngIf="getClassRow(day.day, i)" class="col-md-12"><hr></div>
+                  <div class="col-md-1">
+                      <span [innerHTML]="day.date"></span>
+                      <span [innerHTML]="day.month"></span>
+                      <span [innerHTML]="day.year"></span>
+                  </div>
+          </div>
+      </div>
     </div>
 </div>

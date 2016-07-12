@@ -46,65 +46,82 @@ export class Calendar {
   ngOnInit() {
     console.log('hello `Calendar` component');
 
-    this.today = new Date();
-    this.month = this.tab_month[this.today.getMonth()];
-    this.year = this.today.getFullYear();
+    this.initCalendar('2016/07/12');
 
-    var lastd;
-    var firstd;
+  }
 
-    firstd = new Date(this.year.valueOf(), this.today.getMonth(), 1);
+  initCalendar(updateDate)
+  {
+      this.days = [];
 
-    console.log(firstd.getDay());
-    console.log(firstd.getDate());
-    console.log(this.tab_month[firstd.getMonth()];);
+      this.today = new Date(updateDate);
+      this.month = this.tab_month[this.today.getMonth()];
+      this.year = this.today.getFullYear();
 
-    var diff = firstd.getDay();
-    var d : any = {};
-    var i = 0;
-    console.log(diff);
-    if(diff>0)
-    {
-      lastd = new Date(this.year.valueOf(), this.today.getMonth()-1, 0);
-      this.lastDayMonth = lastd.getDate();
-      for(i=this.lastDayMonth-diff+1; i<this.lastDayMonth; i++)
+      var lastd;
+      var firstd;
+
+      firstd = new Date(this.year.valueOf(), this.today.getMonth(), 1);
+
+      console.log(firstd.getDay());
+      console.log(firstd.getDate());
+      console.log(this.tab_month[firstd.getMonth()];);
+
+      var diff = firstd.getDay();
+      var d : any = {};
+      var i = 0;
+      console.log(diff);
+      if(diff>0)
       {
-        console.log(i);
+        lastd = new Date(this.year.valueOf(), this.today.getMonth()-1, 0);
+        this.lastDayMonth = lastd.getDate();
+        for(i=this.lastDayMonth-diff+1; i<this.lastDayMonth; i++)
+        {
+          console.log(i);
+          d = {};
+          var date =  new Date(this.year.valueOf(), this.today.getMonth()-1, i);
+          d.day = date.getDay();
+          d.date = date.getDate();
+          d.month = this.tab_month[date.getMonth()];
+          d.year = date.getFullYear();
+          this.days.push(d);
+        }
+      }
+
+      i = 1;
+      lastd = new Date(this.today.getFullYear(), this.today.getMonth()+1, 0);
+      this.lastDayMonth = lastd.getDate();
+      console.log(">>> lastDay month "+this.lastDayMonth);
+      console.log(">>> lastDay month "+lastd.getMonth());
+      for(i=1; i<=this.lastDayMonth; i++)
+      {
         d = {};
-        var date =  new Date(this.year.valueOf(), this.today.getMonth()-1, i);
+        // product.destinations = [];
+        var date =  new Date(this.year.valueOf(), this.today.getMonth(), i);
         d.day = date.getDay();
         d.date = date.getDate();
         d.month = this.tab_month[date.getMonth()];
         d.year = date.getFullYear();
         this.days.push(d);
       }
-    }
-
-    i = 1;
-    lastd = new Date(this.today.getFullYear(), this.today.getMonth()+1, 0);
-    this.lastDayMonth = lastd.getDate();
-    console.log(">>> lastDay month "+this.lastDayMonth);
-    console.log(">>> lastDay month "+lastd.getMonth());
-    for(i=1; i<=this.lastDayMonth; i++)
-    {
-      d = {};
-      // product.destinations = [];
-      var date =  new Date(this.year.valueOf(), this.today.getMonth(), i);
-      d.day = date.getDay();
-      d.date = date.getDate();
-      d.month = this.tab_month[date.getMonth()];
-      d.year = date.getFullYear();
-      this.days.push(d);
-    }
 
     console.log(this.days);
-
   }
 
-  getClassRow(value)
+  updateCalendar(id)
   {
-      if(value == 0) return true;
+     console.log('ouiiiiiiiiii '+id);
+     this.initCalendar('2016/'+(id+1)+'/1');
+  }
+
+  getClassRow(value, id)
+  {
+
+      console.log('modulo'+(id%6));
+      if(id%7 == 0 && id != 0) return true;
       else return false;
+
+
   }
 
 
