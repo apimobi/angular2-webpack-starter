@@ -12,9 +12,7 @@ console.log('`Calendar`');
   selector: 'calendar',
   styles: [
   `
-  /*.row {
-    background-color: yellow;
-  }*/
+
   `],
   template:  require ('./calendar.html')
   // `
@@ -65,7 +63,7 @@ export class Calendar {
 
       console.log(firstd.getDay());
       console.log(firstd.getDate());
-      console.log(this.tab_month[firstd.getMonth()];);
+      console.log(this.tab_month[firstd.getMonth()]);
 
       var diff = firstd.getDay();
       var d : any = {};
